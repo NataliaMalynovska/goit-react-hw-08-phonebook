@@ -2,6 +2,7 @@ import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { fetchContacts, addContact, deleteContact } from './operations';
+import { logOut } from 'redux/auth/operations';
 
 const contactsInitialState = {
   items: [],
@@ -22,6 +23,11 @@ const handleDeleteContact = (state, action) => {
   const idx = state.items.findIndex(item => item.id === action.payload.id);
   state.items.splice(idx, 1);
 };
+const handleLogOut = (state)=> {
+  state.items = [];
+  state.error = null;
+  state.isLoading = false;
+};
 
 const contactsSlice = createSlice({
   name: 'contacts',
@@ -29,6 +35,7 @@ const contactsSlice = createSlice({
 
   extraReducers: builder =>
     builder
+    .addCase(logOut.fulfilled, handleLogOut)
       .addCase(fetchContacts.fulfilled, handleFetchContacts)
       .addCase(addContact.fulfilled, handleAddContact)
       .addCase(deleteContact.fulfilled, handleDeleteContact)
@@ -88,7 +95,9 @@ const contactsSlice = createSlice({
   //       state.error = action.payload;
   //     },
   // },
-});
+
+},
+);
 const persistConfig = {
   key: 'contacts',
   storage,
