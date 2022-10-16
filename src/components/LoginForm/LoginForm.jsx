@@ -1,6 +1,7 @@
+import { Box } from 'common/Box';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
-import {LogForm, LogLabel } from './LoginForm.styled';
+import { LogForm, LogLabel, LogInput, LogButton } from './LoginForm.styled';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -18,16 +19,27 @@ export const LoginForm = () => {
   };
 
   return (
-    <LogForm  onSubmit={handleSubmit} autoComplete="off">
-      <LogLabel >
-        Email
-        <input type="email" name="email" />
-      </LogLabel>
-      <LogLabel >
-        Password
-        <input type="password" name="password" />
-      </LogLabel>
-      <button type="submit">Log In</button>
-    </LogForm>
+    <Box
+      as="main"
+      backgroundColor="#c3c8db"
+      mt="36px"
+      p="16px"
+      width="560px"
+      height="560px"
+      mr="auto"
+      ml="auto"
+    >
+      <LogForm onSubmit={handleSubmit} autoComplete="off">
+        <LogLabel>
+          Email
+          <LogInput type="email" name="email" />
+        </LogLabel>
+        <LogLabel>
+          Password
+          <LogInput type="password" name="password" />
+        </LogLabel>
+        <LogButton type="submit">Log In</LogButton>
+      </LogForm>
+    </Box>
   );
 };

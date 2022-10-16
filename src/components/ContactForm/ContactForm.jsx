@@ -20,7 +20,7 @@ const Input = styled(Field)`
   height: 40px;
   font-size: 18px;
   background: Lavender;
-  border: 1px solid MidnightBlue;
+  border: 1px solid Lavender;
   border-radius: 10px;
   transition: border 50ms cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 15px 16px 16px -5px rgba(0, 0, 0, 0.6);

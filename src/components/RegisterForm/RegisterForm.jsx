@@ -1,6 +1,7 @@
+import { Box } from 'common/Box';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
-import { RegForm, RegLabel } from './RegisterForm.styled';
+import { RegForm, RegInput, RegLabel, RegButton } from './RegisterForm.styled';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -19,20 +20,31 @@ export const RegisterForm = () => {
   };
 
   return (
-    <RegForm onSubmit={handleSubmit} autoComplete="off">
-      <RegLabel>
-        Username
-        <input type="text" name="name" />
-      </RegLabel>
-      <RegLabel>
-        Email
-        <input type="email" name="email" />
-      </RegLabel>
-      <RegLabel>
-        Password
-        <input type="password" name="password" />
-      </RegLabel>
-      <button type="submit">Register</button>
-    </RegForm>
+    <Box
+      as="main"
+      backgroundColor="#c3c8db"
+      mt="36px"
+      p="16px"
+      width="560px"
+      height="560px"
+      mr="auto"
+      ml="auto"
+    >
+      <RegForm onSubmit={handleSubmit} autoComplete="off">
+        <RegLabel>
+          Username
+          <RegInput type="text" name="name" />
+        </RegLabel>
+        <RegLabel>
+          Email
+          <RegInput type="email" name="email" />
+        </RegLabel>
+        <RegLabel>
+          Password
+          <RegInput type="password" name="password" />
+        </RegLabel>
+        <RegButton type="submit">Register</RegButton>
+      </RegForm>
+    </Box>
   );
 };
